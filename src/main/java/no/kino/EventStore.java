@@ -1,4 +1,6 @@
-package no.trefsahl;
+package no.kino;
+
+import no.kino.event.Event;
 
 import java.util.ArrayList;
 
