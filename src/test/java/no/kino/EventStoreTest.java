@@ -1,13 +1,11 @@
 package no.kino;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
-
-import no.kino.event.Event;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+
+import static junit.framework.Assert.assertEquals;
 
 @RunWith(JUnit4.class)
 public class EventStoreTest {
@@ -58,6 +56,17 @@ public class EventStoreTest {
         Integer antallLedigeSeter = forestillingProjeksjon.antallLedigeSeter(film);
 
         assertEquals(antallLedigeSeter.intValue(), 95);
+
+    }
+
+    @Test
+    public void testFullForestillingGirFeilmelding() throws Exception {
+        ForestillingService forestillingService = new ForestillingService(eventStorage);
+        String film = "Donnie Darko";
+        forestillingService.opprettForestilling(film, 100);
+        forestillingService.reserverSeter(film, 100);
+        forestillingService.reserverSeter(film, 2);
+
 
     }
 }

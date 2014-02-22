@@ -1,7 +1,6 @@
 package no.kino;
 
 import no.kino.event.Event;
-import no.kino.event.ForestillingOpprettet;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,8 +11,8 @@ public class ForestillingProjeksjon implements Projection {
     private final HashMap<String,Integer> filmerOgAntall;
 
     public ForestillingProjeksjon() {
-        events = new ArrayList<Event>();
-        filmerOgAntall = new HashMap<String, Integer>();
+        events = new ArrayList<>();
+        filmerOgAntall = new HashMap<>();
     }
 
     public Integer antallLedigeSeter(String film){
