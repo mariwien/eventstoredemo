@@ -1,5 +1,7 @@
-package no.kino;
+package no.kino.command;
 
+import no.kino.event.EventStore;
+import no.kino.domain.ForestillingAggregate;
 import no.kino.event.ForestillingOpprettet;
 
 
@@ -9,7 +11,8 @@ public class KinoCommandHandler {
     private final ForestillingAggregate forestillingAggregate = new ForestillingAggregate();
     private final EventStore eventStore = new EventStore();
 
-    KinoCommandHandler(){
+
+    public KinoCommandHandler(){
         eventStore.addListeningProjection(forestillingAggregate);
     }
 

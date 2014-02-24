@@ -1,4 +1,4 @@
-package no.kino;
+package no.kino.projections;
 
 import no.kino.event.Event;
 

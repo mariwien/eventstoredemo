@@ -1,5 +1,7 @@
-package no.kino;
+package no.kino.command;
 
+import no.kino.command.KinoCommandHandler;
+import no.kino.command.OpprettNyForestilling;
 import org.junit.Assert;
 import org.junit.Test;
 

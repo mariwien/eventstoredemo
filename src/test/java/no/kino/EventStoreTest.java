@@ -1,5 +1,7 @@
 package no.kino;
 
+import no.kino.event.EventStore;
+import no.kino.projections.ForestillingProjeksjon;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

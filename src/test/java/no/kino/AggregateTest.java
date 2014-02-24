@@ -1,5 +1,6 @@
 package no.kino;
 
+import no.kino.domain.ForestillingAggregate;
 import no.kino.event.ForestillingOpprettet;
 import no.kino.event.SeterReservert;
 import org.junit.Assert;

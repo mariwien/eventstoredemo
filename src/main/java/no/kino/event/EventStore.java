@@ -1,12 +1,11 @@
-package no.kino;
+package no.kino.event;
 
-import no.kino.event.Event;
+import no.kino.projections.Projection;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
-/**
- * Created by Tor Egil Refsahl on 05.02.14.
- */
+@Component
 public class EventStore {
     private ArrayList<Event> eventStorage;
     private ArrayList<Projection> listeningProjections;

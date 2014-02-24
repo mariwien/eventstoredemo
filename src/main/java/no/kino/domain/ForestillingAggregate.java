@@ -1,12 +1,13 @@
-package no.kino;
+package no.kino.domain;
 
+import no.kino.projections.Projection;
 import no.kino.event.Event;
 import no.kino.event.ForestillingOpprettet;
 import no.kino.event.SeterReservert;
 
 import java.util.HashMap;
 
-public class ForestillingAggregate implements Projection{
+public class ForestillingAggregate implements Projection {
 
     HashMap<String, Integer> forestillinger = new HashMap<>();
 
@@ -17,9 +18,11 @@ public class ForestillingAggregate implements Projection{
 
     @Override
     public void eventAdded(Event event) {
+
         if (event instanceof ForestillingOpprettet) {
             ForestillingOpprettet forestillingOpprettet = (ForestillingOpprettet) event;
             forestillinger.put(forestillingOpprettet.getFilm(), forestillingOpprettet.getAntallPlasser());
+
         } else if (event instanceof SeterReservert) {
             SeterReservert seterReservert = (SeterReservert) event;
             Integer forestilling = forestillinger.get(seterReservert.getFilm());

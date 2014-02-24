@@ -1,10 +1,12 @@
-package no.kino;
+package no.kino.projections;
 
 import no.kino.event.Event;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
+@Component
 public class ForestillingProjeksjon implements Projection {
 
     private final ArrayList<Event> events;

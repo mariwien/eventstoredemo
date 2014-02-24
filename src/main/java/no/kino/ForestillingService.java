@@ -1,5 +1,6 @@
 package no.kino;
 
+import no.kino.event.EventStore;
 import no.kino.event.ForestillingOpprettet;
 import no.kino.event.SeterReservert;
 

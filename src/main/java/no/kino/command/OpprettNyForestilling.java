@@ -1,4 +1,4 @@
-package no.kino;
+package no.kino.command;
 
 public class OpprettNyForestilling {
     private String navnPaaForestilling;
