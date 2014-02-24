@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
-@Component
 public class EventStore {
     private ArrayList<Event> eventStorage;
     private ArrayList<Projection> listeningProjections;

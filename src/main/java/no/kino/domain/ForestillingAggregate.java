@@ -4,6 +4,7 @@ import no.kino.projections.Projection;
 import no.kino.event.Event;
 import no.kino.event.ForestillingOpprettet;
 import no.kino.event.SeterReservert;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 
