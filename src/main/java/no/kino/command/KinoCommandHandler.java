@@ -1,7 +1,7 @@
 package no.kino.command;
 
-import no.kino.event.EventStore;
 import no.kino.domain.ForestillingAggregate;
+import no.kino.event.EventStore;
 import no.kino.event.ForestillingOpprettet;
 import no.kino.event.SeterReservert;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,4 +28,12 @@ public class KinoCommandHandler {
     }
 
 
+    public boolean handle(ReserverSeter reserverSeter) {
+        SeterReservert seterReservert = new SeterReservert(reserverSeter.getForestilling(), reserverSeter.getReserverteSeter());
+        if(forestillingAggregate.kanSeteReserveres(seterReservert)){
+            eventStore.addEvent(seterReservert);
+            return true;
+        }
+        return false;
+    }
 }
