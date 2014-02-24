@@ -2,6 +2,7 @@ package no.kino.spring;
 
 import no.kino.domain.ForestillingAggregate;
 import no.kino.event.EventStore;
+import no.kino.projections.ForestillingProjeksjon;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -20,11 +21,15 @@ public class SpringConfig {
         EventStore eventStore = getEventStore();
         ForestillingAggregate forestillingAggregate = new ForestillingAggregate();
         eventStore.addListeningProjection(forestillingAggregate);
+        eventStore.addListeningProjection(getForestillingProjeksjon());
         return forestillingAggregate;
     }
 
     public @Bean EventStore getEventStore() {
-        EventStore eventStore = new EventStore();
-        return eventStore;
+        return new EventStore();
+    }
+
+    public @Bean ForestillingProjeksjon getForestillingProjeksjon(){
+        return new ForestillingProjeksjon();
     }
 }
