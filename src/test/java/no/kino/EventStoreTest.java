@@ -15,6 +15,8 @@ public class EventStoreTest {
     private ForestillingProjeksjon forestillingProjeksjon;
     private EventStore eventStorage;
 
+    private static String FILM = "Donnie Darko";
+
     @Before
     public void setUp() throws Exception {
         eventStorage = new EventStore();
@@ -25,10 +27,9 @@ public class EventStoreTest {
     @Test
     public void testOpprettingAvForestillingGirAntallSeterTilgjengelig() throws Exception {
         ForestillingService forestillingService = new ForestillingService(eventStorage);
-        String film = "Donnie Darko";
-        forestillingService.opprettForestilling(film, 100);
+        forestillingService.opprettForestilling(FILM, 100);
 
-        Integer antallLedigeSeter = forestillingProjeksjon.antallLedigeSeter(film);
+        Integer antallLedigeSeter = forestillingProjeksjon.antallLedigeSeter(FILM);
 
         assertEquals(antallLedigeSeter.intValue(), 100);
 
@@ -37,11 +38,11 @@ public class EventStoreTest {
     @Test
     public void testOpprettingAvForestillingOgEnReservasjonGirAntallSeterTilgjengelig() throws Exception {
         ForestillingService forestillingService = new ForestillingService(eventStorage);
-        String film = "Donnie Darko";
-        forestillingService.opprettForestilling(film, 100);
-        forestillingService.reserverSeter(film, 3);
 
-        Integer antallLedigeSeter = forestillingProjeksjon.antallLedigeSeter(film);
+        forestillingService.opprettForestilling(FILM, 100);
+        forestillingService.reserverSeter(FILM, 3);
+
+        Integer antallLedigeSeter = forestillingProjeksjon.antallLedigeSeter(FILM);
 
         assertEquals(antallLedigeSeter.intValue(), 97);
 
@@ -50,12 +51,11 @@ public class EventStoreTest {
     @Test
     public void testOpprettingAvForestillingOgToReservasjonGirAntallSeterTilgjengelig() throws Exception {
         ForestillingService forestillingService = new ForestillingService(eventStorage);
-        String film = "Donnie Darko";
-        forestillingService.opprettForestilling(film, 100);
-        forestillingService.reserverSeter(film, 3);
-        forestillingService.reserverSeter(film, 2);
+        forestillingService.opprettForestilling(FILM, 100);
+        forestillingService.reserverSeter(FILM, 3);
+        forestillingService.reserverSeter(FILM, 2);
 
-        Integer antallLedigeSeter = forestillingProjeksjon.antallLedigeSeter(film);
+        Integer antallLedigeSeter = forestillingProjeksjon.antallLedigeSeter(FILM);
 
         assertEquals(antallLedigeSeter.intValue(), 95);
 
@@ -64,10 +64,9 @@ public class EventStoreTest {
     @Test
     public void testFullForestillingGirFeilmelding() throws Exception {
         ForestillingService forestillingService = new ForestillingService(eventStorage);
-        String film = "Donnie Darko";
-        forestillingService.opprettForestilling(film, 100);
-        forestillingService.reserverSeter(film, 100);
-        forestillingService.reserverSeter(film, 2);
+        forestillingService.opprettForestilling(FILM, 100);
+        forestillingService.reserverSeter(FILM, 100);
+        forestillingService.reserverSeter(FILM, 2);
 
 
     }
