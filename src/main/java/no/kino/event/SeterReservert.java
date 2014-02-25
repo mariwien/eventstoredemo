@@ -26,6 +26,6 @@ public class SeterReservert implements Event {
 
     @Override
     public Integer getAntallSeter() {
-        return -antallPlasser;
+        return antallPlasser;
     }
 }
