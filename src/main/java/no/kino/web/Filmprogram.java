@@ -10,9 +10,11 @@
     import javax.ws.rs.Path;
     import javax.ws.rs.Produces;
     import javax.ws.rs.core.MediaType;
+    import java.util.ArrayList;
     import java.util.Collection;
+    import java.util.Map;
 
-@Service
+    @Service
 @Path("filmprogram")
 public class Filmprogram {
 
@@ -22,11 +24,10 @@ public class Filmprogram {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Collection<Film> filmprogram(){
-        if (forestillinger == null) {
-            return null;
-        }
-
-
-        return null;
+        ArrayList<Film> filmer = new ArrayList<Film>();
+        for (Map.Entry<String, Film> stringFilmEntry : forestillinger.listAlleForestillinger().entrySet()) {
+            filmer.add(stringFilmEntry.getValue());
+        };
+        return filmer;
     }
 }

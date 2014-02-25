@@ -26,7 +26,8 @@ public class SpringConfig {
     }
 
     public @Bean EventStore getEventStore() {
-        return new EventStore();
+        EventStore eventStore = new EventStore();
+        return eventStore;
     }
 
     public @Bean ForestillingProjeksjon getForestillingProjeksjon(){

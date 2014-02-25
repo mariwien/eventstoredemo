@@ -1,7 +1,6 @@
 package no.kino.event;
 
 import no.kino.projections.Projection;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
@@ -16,6 +15,13 @@ public class EventStore {
 
     public  void addListeningProjection(Projection projection) {
         listeningProjections.add(projection);
+        spillAvHistoriskeEventer(projection);
+    }
+
+    private void spillAvHistoriskeEventer(Projection projection) {
+        for (Event event : eventStorage) {
+            projection.eventAdded(event);
+        }
     }
 
     public void addEvent(Event incomingEvent) {

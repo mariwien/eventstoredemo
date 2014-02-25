@@ -9,7 +9,7 @@ import org.junit.runners.JUnit4;
 
 import static junit.framework.Assert.assertEquals;
 
-@RunWith(JUnit4.class)
+    @RunWith(JUnit4.class)
 public class EventStoreTest {
 
     private ForestillingProjeksjon forestillingProjeksjon;
@@ -30,7 +30,6 @@ public class EventStoreTest {
         forestillingService.opprettForestilling(FILM, 100);
 
         Integer antallLedigeSeter = forestillingProjeksjon.antallLedigeSeter(FILM);
-
         assertEquals(antallLedigeSeter.intValue(), 100);
 
     }
@@ -43,9 +42,7 @@ public class EventStoreTest {
         forestillingService.reserverSeter(FILM, 3);
 
         Integer antallLedigeSeter = forestillingProjeksjon.antallLedigeSeter(FILM);
-
         assertEquals(antallLedigeSeter.intValue(), 97);
-
     }
 
     @Test
@@ -56,9 +53,7 @@ public class EventStoreTest {
         forestillingService.reserverSeter(FILM, 2);
 
         Integer antallLedigeSeter = forestillingProjeksjon.antallLedigeSeter(FILM);
-
         assertEquals(antallLedigeSeter.intValue(), 95);
-
     }
 
     @Test
@@ -67,7 +62,6 @@ public class EventStoreTest {
         forestillingService.opprettForestilling(FILM, 100);
         forestillingService.reserverSeter(FILM, 100);
         forestillingService.reserverSeter(FILM, 2);
-
-
     }
+
 }
