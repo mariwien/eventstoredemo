@@ -3,14 +3,16 @@ package no.kino.event;
 import no.kino.projections.Projection;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class EventStore {
     private ArrayList<Event> eventStorage;
-    private ArrayList<Projection> listeningProjections;
+    private Set<Projection> listeningProjections;
 
     public EventStore(){
         eventStorage = new ArrayList<>();
-        listeningProjections = new ArrayList<>();
+        listeningProjections = new HashSet<>();
     }
 
     public  void addListeningProjection(Projection projection) {
