@@ -11,14 +11,6 @@ public class SeterReservert implements Event {
         this.antallPlasser = antallPlasser;
     }
 
-    public Integer getAntallPlasser() {
-        return antallPlasser;
-    }
-
-    public String getNavn() {
-        return navn;
-    }
-
     @Override
     public String getFilm() {
         return navn;

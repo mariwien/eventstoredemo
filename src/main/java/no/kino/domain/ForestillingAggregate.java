@@ -1,10 +1,9 @@
 package no.kino.domain;
 
-import no.kino.projections.Projection;
 import no.kino.event.Event;
 import no.kino.event.ForestillingOpprettet;
 import no.kino.event.SeterReservert;
-import org.springframework.stereotype.Component;
+import no.kino.projections.Projection;
 
 import java.util.HashMap;
 
@@ -22,12 +21,12 @@ public class ForestillingAggregate implements Projection {
 
         if (event instanceof ForestillingOpprettet) {
             ForestillingOpprettet forestillingOpprettet = (ForestillingOpprettet) event;
-            forestillinger.put(forestillingOpprettet.getFilm(), forestillingOpprettet.getAntallPlasser());
+            forestillinger.put(forestillingOpprettet.getFilm(), forestillingOpprettet.getAntallSeter());
 
         } else if (event instanceof SeterReservert) {
             SeterReservert seterReservert = (SeterReservert) event;
             Integer forestilling = forestillinger.get(seterReservert.getFilm());
-            int antallTilgjengeligePlasser = forestilling - seterReservert.getAntallPlasser();
+            int antallTilgjengeligePlasser = forestilling - seterReservert.getAntallSeter();
             forestillinger.put(seterReservert.getFilm(), antallTilgjengeligePlasser);
         }
     }
