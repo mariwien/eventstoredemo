@@ -32,14 +32,12 @@ public class Filmprogram {
         for (Map.Entry<String, Film> stringFilmEntry : forestillinger.listAlleForestillinger().entrySet()) {
             filmer.add(stringFilmEntry.getValue());
         }
-        System.out.println("filmprogram " + filmer.size());
         return filmer;
     }
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public void opprettFilm(Film film){
-        System.out.println("opprett film:" + film.getNavn() + film.getLedigeSeter());
         if(film!=null){
             kinoCommandHandler.handle(new OpprettNyForestilling(film.getNavn(), film.getLedigeSeter()));
         }
