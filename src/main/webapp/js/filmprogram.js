@@ -1,7 +1,5 @@
 
-var kinoApp = angular.module('phonecatApp',  []);
-
-
+var kinoApp = angular.module('KinoApp',  []);
 
 kinoApp.controller('filmprogram', function ($scope, $http) {
   $http.get('rest/filmprogram').success(function(data){
@@ -10,6 +8,6 @@ kinoApp.controller('filmprogram', function ($scope, $http) {
 
   $scope.opprettFilm = function(){
     console.log($scope.navn, $scope.antallSeter);
-    $http.put('rest/filmprogram', {"navn":$scope.navn,"ledigeSeter":$scope.antallSeter})
+    $http.put('rest/filmprogram', {"navn":$scope.navn, "ledigeSeter":$scope.antallSeter})
   };
 });

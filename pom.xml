@@ -33,6 +33,8 @@
                 <scanIntervalSeconds>10</scanIntervalSeconds>
                 <webApp>
                     <contextPath>/</contextPath>
+                    <!-- To override useFileMappedBuffer, when using jetty:run to avoid file locking -->
+                    <defaultsDescriptor>${basedir}/src/test/resources/webdefault.xml</defaultsDescriptor>
                 </webApp>
             </configuration>
         </plugin>

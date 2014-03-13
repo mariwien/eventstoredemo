@@ -1,8 +1,5 @@
 package no.kino.command;
 
-/**
- * Created by mariwien on 24/02/14.
- */
 public class ReserverSeter{
     private String forestilling;
     private int reserverteSeter;

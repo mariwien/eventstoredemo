@@ -11,12 +11,10 @@ public class SeterReservert implements Event {
         this.antallPlasser = antallPlasser;
     }
 
-    @Override
     public String getFilm() {
         return navn;
     }
 
-    @Override
     public Integer getAntallSeter() {
         return antallPlasser;
     }

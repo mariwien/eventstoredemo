@@ -25,7 +25,6 @@
         <param-value>no.kino.spring</param-value>
     </context-param>
 
-
     <!-- Bootstrap spring -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -41,12 +40,6 @@
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
 
-
-    <!-- Jersey with Spring -->
-   <!-- <filter>
-        <filter-name>Jersey with Spring</filter-name>
-        <filter-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</filter-class>
-    </filter> -->
 </web-app>
 
 
