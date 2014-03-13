@@ -2,6 +2,22 @@ var kinoApp = angular.module('KinoApp', []);
 
 kinoApp.controller('filmprogram', function ($scope, $http) {
 
+    function setupServerSideEvents ($scope) {
+        $scope.lastEvent = {};
+
+        var handleCallback = function (msg) {
+            console.log("got event from server! :)");
+            $scope.lastEvent = msg;
+            updateFilmprogram();
+        }
+
+        var source = new EventSource('rest/events');
+        source.onmessage = function(event) {
+           console.log(event);
+        };
+        //source.addEventListener('message', handleCallback, false);
+        console.log(source);
+    }
     updateFilmprogram();
 
     $scope.opprettFilm = function () {
@@ -9,7 +25,6 @@ kinoApp.controller('filmprogram', function ($scope, $http) {
             "navn": $scope.navn,
             "ledigeSeter": $scope.antallSeter
         });
-        updateFilmprogram();
     };
 
     $scope.reserverSete = function(film, reserverteSeter) {
@@ -17,8 +32,6 @@ kinoApp.controller('filmprogram', function ($scope, $http) {
             "forestilling": film,
             "reserverteSeter":reserverteSeter
         });
-        // Vi må vente litt før vi henter data. Løses med SSE.
-        setTimeout(updateFilmprogram,400);
     };
 
     function updateFilmprogram() {
@@ -27,6 +40,6 @@ kinoApp.controller('filmprogram', function ($scope, $http) {
         });
     }
 
-
+    setupServerSideEvents($scope);
 });
 

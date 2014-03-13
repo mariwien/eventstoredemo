@@ -5,16 +5,12 @@
 	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
     <display-name>Event Sourcing Demo Web App</display-name>
 
-    <servlet>
-        <servlet-name>jersey-serlvet</servlet-name>
-        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
-        <init-param>
-            <param-name>jersey.config.server.provider.packages</param-name>
-            <param-value>no.kino</param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
+    <!-- Jersey settes opp i Application.class (servlet 3.0 spec) -->
 
+    <!-- Bootstrap spring -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
     <!-- Istedet for spring application context xml -->
     <context-param>
         <param-name>contextClass</param-name>
@@ -24,17 +20,6 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>no.kino.spring</param-value>
     </context-param>
-
-    <!-- Bootstrap spring -->
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-
-    <!-- Jersey behandler alle /rest/ url'er -->
-    <servlet-mapping>
-        <servlet-name>jersey-serlvet</servlet-name>
-        <url-pattern>/rest/*</url-pattern>
-    </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>

@@ -3,9 +3,12 @@ package no.kino.spring;
 import no.kino.domain.ForestillingAggregate;
 import no.kino.event.EventStore;
 import no.kino.projections.ForestillingProjeksjon;
+import no.kino.web.SSEResource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+
+import javax.annotation.PostConstruct;
 
 
 @Configuration
@@ -17,20 +20,27 @@ import org.springframework.context.annotation.Configuration;
         "no.kino.domain"})
 public class SpringConfig {
 
-    public @Bean ForestillingAggregate forestillingAggregate() {
+    @PostConstruct
+    public void initEventStore() {
         EventStore eventStore = getEventStore();
-        ForestillingAggregate forestillingAggregate = new ForestillingAggregate();
-        eventStore.addListeningProjection(forestillingAggregate);
+        eventStore.addListeningProjection(getForestillingAggregate());
         eventStore.addListeningProjection(getForestillingProjeksjon());
-        return forestillingAggregate;
+        eventStore.addListeningProjection(getServerSideEventResource());
+    }
+
+    public @Bean ForestillingAggregate getForestillingAggregate() {
+        return new ForestillingAggregate();
     }
 
     public @Bean EventStore getEventStore() {
-        EventStore eventStore = new EventStore();
-        return eventStore;
+        return new EventStore();
     }
 
     public @Bean ForestillingProjeksjon getForestillingProjeksjon(){
         return new ForestillingProjeksjon();
+    }
+
+    public @Bean SSEResource getServerSideEventResource() {
+        return new SSEResource();
     }
 }
