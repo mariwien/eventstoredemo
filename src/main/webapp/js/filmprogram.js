@@ -2,8 +2,11 @@ var kinoApp = angular.module('KinoApp', []);
 
 kinoApp.controller('filmprogram', function ($scope, $http) {
 
+
     function setupServerSideEvents () {
+        $scope.sse = [];
         var handleCallback = function (msg) {
+            $scope.sse.unshift(msg.data);
             console.log("got event from server: " + msg.data);
             updateFilmprogram();
         }
@@ -16,7 +19,6 @@ kinoApp.controller('filmprogram', function ($scope, $http) {
             $scope.filmprogram = data;
         });
     }
-
 
     $scope.opprettFilm = function () {
         $http.put('rest/filmprogram', {
