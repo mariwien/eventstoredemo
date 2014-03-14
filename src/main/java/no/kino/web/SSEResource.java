@@ -45,6 +45,7 @@ public class SSEResource implements Projection {
                     .mediaType(MediaType.TEXT_PLAIN_TYPE)
                     .data(String.class, seterReservert.toString())
                     .build();
+
         } else if (event instanceof ForestillingOpprettet) {
             ForestillingOpprettet forestillingOpprettet = (ForestillingOpprettet) event;
             outboundEvent = eventBuilder
