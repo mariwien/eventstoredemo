@@ -2,23 +2,21 @@ var kinoApp = angular.module('KinoApp', []);
 
 kinoApp.controller('filmprogram', function ($scope, $http) {
 
-    function setupServerSideEvents ($scope) {
-        $scope.lastEvent = {};
-
+    function setupServerSideEvents () {
         var handleCallback = function (msg) {
-            console.log("got event from server! :)");
-            $scope.lastEvent = msg;
+            console.log("got event from server: " + msg.data);
             updateFilmprogram();
         }
-
         var source = new EventSource('rest/events');
-        source.onmessage = function(event) {
-           console.log(event);
-        };
-        //source.addEventListener('message', handleCallback, false);
-        console.log(source);
+        source.addEventListener('message',handleCallback);
     }
-    updateFilmprogram();
+
+    function updateFilmprogram() {
+        $http.get('rest/filmprogram').success(function (data) {
+            $scope.filmprogram = data;
+        });
+    }
+
 
     $scope.opprettFilm = function () {
         $http.put('rest/filmprogram', {
@@ -34,12 +32,7 @@ kinoApp.controller('filmprogram', function ($scope, $http) {
         });
     };
 
-    function updateFilmprogram() {
-        $http.get('rest/filmprogram').success(function (data) {
-            $scope.filmprogram = data;
-        });
-    }
-
-    setupServerSideEvents($scope);
+    setupServerSideEvents();
+    updateFilmprogram();
 });
 

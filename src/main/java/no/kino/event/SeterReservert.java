@@ -18,4 +18,8 @@ public class SeterReservert implements Event {
     public Integer getAntallSeter() {
         return antallPlasser;
     }
+
+    public String toString() {
+        return "Film:" + navn + ", Antall plasser reservert:" + antallPlasser;
+    }
 }

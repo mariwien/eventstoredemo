@@ -4,6 +4,7 @@ import no.kino.domain.ForestillingAggregate;
 import no.kino.event.EventStore;
 import no.kino.projections.ForestillingProjeksjon;
 import no.kino.web.SSEResource;
+import org.glassfish.jersey.media.sse.SseBroadcaster;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -42,5 +43,9 @@ public class SpringConfig {
 
     public @Bean SSEResource getServerSideEventResource() {
         return new SSEResource();
+    }
+
+    public @Bean SseBroadcaster getBroadcaster() {
+        return new SseBroadcaster();
     }
 }

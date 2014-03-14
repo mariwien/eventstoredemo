@@ -18,4 +18,8 @@ public class ForestillingOpprettet implements Event {
     public Integer getAntallSeter() {
         return antallPlasser;
     }
+
+    public String toString() {
+        return "Film opprettet:" + navn + ", Antall plasser:" + antallPlasser;
+    }
 }
