@@ -4,20 +4,17 @@ import no.kino.event.Event;
 import no.kino.event.ForestillingOpprettet;
 import no.kino.event.SeterReservert;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ForestillingProjeksjon implements Projection {
 
-    private final ArrayList<Event> events;
-    private final HashMap<String, Film> filmer;
+    private final HashMap<String, Forestilling> filmer;
 
     public ForestillingProjeksjon() {
-        events = new ArrayList<>();
         filmer = new HashMap<>();
     }
 
-    public HashMap<String, Film> listAlleForestillinger() {
+    public HashMap<String, Forestilling> listAlleForestillinger() {
         return filmer;
     }
 
@@ -27,16 +24,15 @@ public class ForestillingProjeksjon implements Projection {
 
     @Override
     public void eventAdded(Event event) {
-        events.add(event);
 
         if (event instanceof ForestillingOpprettet) {
             ForestillingOpprettet forestillingOpprettet = (ForestillingOpprettet) event;
-            filmer.put(forestillingOpprettet.getFilm(), new Film(forestillingOpprettet.getFilm(), forestillingOpprettet.getAntallSeter()));
+            filmer.put(forestillingOpprettet.getFilm(), new Forestilling(forestillingOpprettet.getFilm(), forestillingOpprettet.getAntallSeter()));
 
         } else if (event instanceof SeterReservert) {
             SeterReservert seterReservert = (SeterReservert) event;
             Integer antallSeter = filmer.get(seterReservert.getFilm()).getLedigeSeter();
-            filmer.put(seterReservert.getFilm(), new Film(seterReservert.getFilm(), antallSeter - seterReservert.getAntallSeter()));
+            filmer.put(seterReservert.getFilm(), new Forestilling(seterReservert.getFilm(), antallSeter - seterReservert.getAntallSeter()));
         }
     }
 

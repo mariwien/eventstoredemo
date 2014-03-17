@@ -18,6 +18,13 @@
     <plugins>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <configuration>
+                <failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.0</version>
             <configuration>
@@ -32,7 +39,6 @@
             <configuration>
                 <scanIntervalSeconds>10</scanIntervalSeconds>
                 <webApp>
-                    <contextPath>/</contextPath>
                     <!-- To override useFileMappedBuffer, when using jetty:run to avoid file locking -->
                     <defaultsDescriptor>${basedir}/src/test/resources/webdefault.xml</defaultsDescriptor>
                 </webApp>
@@ -42,6 +48,7 @@
 </build>
 
   <dependencies>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

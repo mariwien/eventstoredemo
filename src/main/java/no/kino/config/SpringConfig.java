@@ -1,4 +1,4 @@
-package no.kino.spring;
+package no.kino.config;
 
 import no.kino.domain.ForestillingAggregate;
 import no.kino.event.EventStore;
@@ -10,7 +10,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
-
 
 @Configuration
 @ComponentScan(basePackages = {

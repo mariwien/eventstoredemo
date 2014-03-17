@@ -3,14 +3,14 @@ package no.kino.projections;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class Film {
+public class Forestilling {
     private String navn;
     private int ledigeSeter;
 
-    public Film() {
+    public Forestilling() {
     }
 
-    public Film(String navn, int ledigeSeter) {
+    public Forestilling(String navn, int ledigeSeter) {
         this.navn=navn;
         this.ledigeSeter=ledigeSeter;
     }

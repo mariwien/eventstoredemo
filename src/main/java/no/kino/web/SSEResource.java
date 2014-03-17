@@ -17,8 +17,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-
-
 @Service
 @Path("events")
 public class SSEResource implements Projection {

@@ -20,6 +20,6 @@ public class ForestillingOpprettet implements Event {
     }
 
     public String toString() {
-        return "Film opprettet:" + navn + ", Antall plasser:" + antallPlasser;
+        return "Forestilling opprettet:" + navn + ", Antall plasser:" + antallPlasser;
     }
 }

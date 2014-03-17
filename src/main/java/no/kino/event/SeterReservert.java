@@ -20,6 +20,6 @@ public class SeterReservert implements Event {
     }
 
     public String toString() {
-        return "Film:" + navn + ", Antall plasser reservert:" + antallPlasser;
+        return "Forestilling:" + navn + ", Antall plasser reservert:" + antallPlasser;
     }
 }
