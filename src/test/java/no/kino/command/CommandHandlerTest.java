@@ -24,7 +24,6 @@ public class CommandHandlerTest extends SpringTestContext{
         Assert.assertTrue(kinoCommandHandler.handle(opprettNyForestilling));
     }
 
-
     @Test
     public void OppretteToLikeForestillingerSkalIkkeFungere() {
         OpprettNyForestilling opprettNyForestilling = new OpprettNyForestilling(FORESTILLING,10);
